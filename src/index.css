@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html { scroll-behavior: smooth; }
+:root {
+  --c-primary: #6484E7;
+  --c-accent: #FFD600;
+  --c-label: #1E40AF;
+  --c-school: #1746D1;
+}
+body { font-family: 'Inter', system-ui, sans-serif; }
+
+/* Reuse existing card styles - imported from original style.css */
