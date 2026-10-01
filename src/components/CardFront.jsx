@@ -1,8 +1,15 @@
 import { forwardRef } from 'react'
+import SchoolCardLayer from './SchoolCardLayer'
+import SchoolHeaderArt from './SchoolHeaderArt'
+import { getSchoolKey } from '../lib/schoolCardTheme'
 
 const CardFront = forwardRef(function CardFront({ t, school, student, contact, title,
   leftLogo, rightLogo, photo, watermark, wmSize, wmOp }, ref) {
-  return <div id="card" ref={ref} className={t.wave ? 'theme-shwemu' : ''}>
+  const schoolKey = getSchoolKey(t)
+  const cardClass = schoolKey === 'cbg' ? '' : t.wave ? 'theme-shwemu' : `theme-refined theme-${schoolKey} theme-reference theme-school-${schoolKey}`
+  return <div id="card" ref={ref} className={cardClass}>
+    <SchoolCardLayer school={school} schoolKey={schoolKey} logo={leftLogo || rightLogo} side="front"/>
+    {!t.wave && <SchoolHeaderArt schoolKey={schoolKey} side="front"/>}
     <div className="decor d1"/><div className="decor d2"/><div className="decor d3"/><div className="decor d4"/>
     {t.wave && <><div className="top-ribbon"><svg viewBox="0 0 1080 44" preserveAspectRatio="none"><path fill="#1E2A5E" d="M0 0 H1080 V24 C900 42 760 10 560 26 C380 40 180 12 0 32 Z"/><path fill="#F59E0B" d="M0 0 H1080 V14 C900 30 760 2 560 16 C380 28 180 4 0 20 Z"/></svg></div><div className="bottom-wave"><svg viewBox="0 0 1080 56" preserveAspectRatio="none"><path fill="#1E2A5E" d="M0 56 H1080 V26 C900 10 760 40 560 24 C380 10 180 42 0 22 Z"/><path fill="#F59E0B" d="M0 56 H1080 V40 C900 26 760 52 560 38 C380 26 180 54 0 38 Z"/></svg></div></>}
     <div className="watermark-wrap">{watermark && <img alt="" src={watermark} style={{width:`${wmSize}%`,opacity:wmOp/100,maxWidth:'58%',maxHeight:'58%',objectFit:'contain',display:'block',filter:'drop-shadow(0 0 8px rgba(100,132,231,0.12))',transform:'translateY(91px)'}}/>}</div>
