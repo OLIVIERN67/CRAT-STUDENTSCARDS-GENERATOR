@@ -10,14 +10,16 @@ const schools = [
   { id: 'trinite', name: 'Groupe Scolaire de la Trinite', short: 'TR', color: '#1d4ed8', desc: 'Single-card editor — update student details, upload photo and logo, then download JPG or print.' },
 ]
 
-export default function Home() {
+export default function Home({ onLogout }) {
   return (
     <div style={{
       minHeight: '100vh',
+      position: 'relative',
       background: 'linear-gradient(135deg, #002B52 0%, #003B73 45%, #1746D1 100%)',
       backgroundImage: 'radial-gradient(circle at 85% 15%, rgba(255,214,0,.14), transparent 42%), radial-gradient(circle at 10% 90%, rgba(197,251,48,.10), transparent 40%), linear-gradient(135deg, #002B52 0%, #003B73 45%, #1746D1 100%)',
       display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '28px 20px'
     }}>
+      <button type="button" onClick={onLogout} style={{ position: 'absolute', top: 18, right: 20, padding: '9px 14px', border: '1px solid rgba(255,255,255,.45)', borderRadius: 8, background: 'rgba(255,255,255,.12)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>Sign out</button>
       <div style={{ width: '100%', maxWidth: 1180 }}>
         <div style={{ textAlign: 'center', color: '#fff', marginBottom: 34 }}>
           <div style={{ width: 74, height: 74, margin: '0 auto 16px', borderRadius: 20, background: '#FFD600', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 12px 30px rgba(0,0,0,.35)' }}>
